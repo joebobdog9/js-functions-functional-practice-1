@@ -170,21 +170,21 @@ var customers = [{
 }]
 
 var results = customers
-    .filter(function(v, i, array) {
+    .filter(function(obj) {
             // YOUR CODE HERE
             return /^J.+$/.test(obj.first)
-        }
+        })
 
 
         .map(function(obj) {
             // YOUR CODE HERE
             var ol = {}
-            ol.fulname = obj.first + " " + obj.last
+            ol.fullname = obj.first + " " + obj.last
             return ol;
         })
 
 
-        fullname.sort(function(a, b) {
+        .sort(function(a, b) {
             // YOUR CODE HERE
             if (a.fullname > b.fullname) {
                 return 1;
@@ -192,9 +192,10 @@ var results = customers
             if (a.fullname < b.fullname) {
                 return -1;
             }
-            console.log(fullname)
+            return 0;
         })
 
         // // tests
         // // ---
-        console.assert(results[0].fullname === "Jack White") console.assert(results[2].fullname === "John Smith")
+        console.assert(results[0].fullname === "Jack White") 
+        console.assert(results[2].fullname === "John Smith")
